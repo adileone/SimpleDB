@@ -1,5 +1,9 @@
 package simpledb.stats;
 
+
+
+//DAVIDE
+
 public class BasicRecordStats {
 
 
@@ -9,9 +13,13 @@ public class BasicRecordStats {
 	private	int writtenFieldsRecord;
 
 
-	public BasicRecordStats() {}	
+	public BasicRecordStats() {}
 
 
+	
+	
+	
+	
 	public void incrementerReadRecord() {
 		this.readRecord ++;
 	}
@@ -27,14 +35,18 @@ public class BasicRecordStats {
 	public void incrementerWrittenFieldsRecord() {
 		this.writtenFieldsRecord ++;
 	}
-
-
+	
+	
+	
+	
 	@Override
 	public String toString() {
 		return "BasicRecordStats [readRecord=" + readRecord + ", writtenRecord=" + writtenRecord + ", readFieldsRecord="
 				+ readFieldsRecord + ", writtenFieldsRecord=" + writtenFieldsRecord + "]\n";
 	}
 
+	
+	
 
 	//Getters & Setters
 
@@ -62,6 +74,13 @@ public class BasicRecordStats {
 	public void setWrittenFieldsRecord(int writtenFieldsRecord) {
 		this.writtenFieldsRecord = writtenFieldsRecord;
 	}
+
+
+
+
+
+
+
 
 
 }

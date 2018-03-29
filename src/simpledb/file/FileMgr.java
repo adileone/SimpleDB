@@ -1,7 +1,6 @@
 package simpledb.file;
 
 import static simpledb.file.Page.BLOCK_SIZE;
-
 import java.io.*;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
@@ -29,7 +28,9 @@ public class FileMgr {
 	private boolean isNew;
 	private Map<String,FileChannel> openFiles = new HashMap<String,FileChannel>();
 
+	//DAVIDE
 	private Map<String, BasicFileStats> blockStatsFile;
+
 	/**
 	 * Creates a file manager for the specified database.
 	 * The database will be stored in a folder of that name
@@ -67,6 +68,8 @@ public class FileMgr {
 			bb.clear();
 			FileChannel fc = getFile(blk.fileName());
 			fc.read(bb, blk.number() * BLOCK_SIZE);
+			updateReadBlockStats(blk, bb);
+
 		}
 		catch (IOException e) {
 			throw new RuntimeException("cannot read block " + blk);
@@ -83,12 +86,15 @@ public class FileMgr {
 			bb.rewind();
 			FileChannel fc = getFile(blk.fileName());
 			fc.write(bb, blk.number() * BLOCK_SIZE);
+			updateWriteBlockStats(blk, bb);
 		}
 		catch (IOException e) {
 			throw new RuntimeException("cannot write block" + blk);
 		}
 	}
 
+
+	//DAVIDE
 	private void updateReadBlockStats(Block blk, ByteBuffer bb){
 
 
@@ -104,6 +110,7 @@ public class FileMgr {
 
 	}
 
+	//DAVIDE
 	private void updateWriteBlockStats(Block blk, ByteBuffer bb){
 
 		BasicFileStats basicFileStats = this.blockStatsFile.get(blk.fileName());
@@ -115,7 +122,9 @@ public class FileMgr {
 			System.out.println(e.getMessage());		
 		}
 
+
 	}
+
 
 	/**
 	 * Appends the contents of a bytebuffer to the end
@@ -166,6 +175,8 @@ public class FileMgr {
 	 */
 	private FileChannel getFile(String filename) throws IOException {
 		FileChannel fc = openFiles.get(filename);
+
+
 		if (fc == null) {
 			File dbTable = new File(dbDirectory, filename);
 			RandomAccessFile f = new RandomAccessFile(dbTable, "rws");

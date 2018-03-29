@@ -45,4 +45,10 @@ public class RID {
 	public String toString() {
 		return "[" + blknum + ", " + id + "]";
 	}
+	
+	
+	@Override
+	public int hashCode() {
+		return (this.blknum + this.id); 
+	}
 }

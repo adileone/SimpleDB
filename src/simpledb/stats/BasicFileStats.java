@@ -1,17 +1,20 @@
 package simpledb.stats;
 
+
+//DAVIDE
+
 public class BasicFileStats {
 
-
+	
 	private int blockRead;
 	private int blockWritten;
-
-
+	
+	
 	public BasicFileStats(int blockRead, int blockWritten){
-
+		
 		this.blockRead = blockRead;
 		this.blockWritten = blockWritten;
-
+		
 	}
 
 
@@ -24,33 +27,33 @@ public class BasicFileStats {
 
 
 	public void incrementerRead(){
-
+		
 		setBlockRead(this.getBlockRead() + 1);
 	}
-
+	
 	public void incrementerWrite(){
-
+		
 
 		setBlockWritten(this.getBlockWritten() + 1);
 	}
-
-
+	
+	
 	public void resetBlockStats() {
-
+		
 		this.blockRead = 0;
 		this.blockWritten = 0;
-
-
+		
+		
 	}
-
-
+	
+	
 	@Override
 	public String toString() {
 		return "blockRead = " + blockRead + ", blockWritten = " + blockWritten;
 	}
-
+	
 	//Getters & Setters
-
+	
 	public int getBlockRead() {
 		return blockRead;
 	}
@@ -69,7 +72,7 @@ public class BasicFileStats {
 	public void setBlockWritten(int blockWritten) {
 		this.blockWritten = blockWritten;
 	}
-
-
-
+	
+	
+	
 }

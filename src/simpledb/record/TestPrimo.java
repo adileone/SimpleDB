@@ -89,11 +89,11 @@ public class TestPrimo {
 
 			System.out.println("-");
 
-
+			
 		}
+		
 
-
-
+		
 		rf.beforeFirst();
 
 		//stampa record

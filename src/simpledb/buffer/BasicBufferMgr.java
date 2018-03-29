@@ -9,8 +9,8 @@ import simpledb.file.*;
  */
 class BasicBufferMgr {
 	private Buffer[] bufferpool;
-	private int numAvailable;
 	private int indexOfLastBuffer;
+	private int numAvailable;
 
 	/**
 	 * Creates a buffer manager having the specified number 
@@ -76,6 +76,7 @@ class BasicBufferMgr {
 	 * @return the pinned buffer
 	 */
 	synchronized Buffer pinNew(String filename, PageFormatter fmtr) {
+		//chooseUnpinnedBuffer (clock ora, DAVIDE)
 		Buffer buff = chooseUnpinnedBuffer();
 		if (buff == null)
 			return null;
@@ -112,7 +113,8 @@ class BasicBufferMgr {
 		return null;
 	}
 
-	//Strategia Naive
+	//DAVIDE
+	// Strategia Naive
 	//   private Buffer chooseUnpinnedBuffer() {
 	//      for (Buffer buff : bufferpool)
 	//         if (!buff.isPinned())
@@ -120,6 +122,8 @@ class BasicBufferMgr {
 	//      return null;
 	//   }
 
+
+	//DAVIDE
 	//Strategia Clock
 	private Buffer chooseUnpinnedBuffer() {
 

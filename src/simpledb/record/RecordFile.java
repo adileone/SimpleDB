@@ -19,7 +19,6 @@ public class RecordFile {
 	private String filename;
 	private RecordPage rp;
 	private int currentblknum;
-
 	private Map<RID,BasicRecordStats> statsRecord;
 	private RID lastReadRecord;
 	private RID lastWrittenRecord;
@@ -35,11 +34,15 @@ public class RecordFile {
 		this.statsRecord = new HashMap<RID, BasicRecordStats>();
 		this.ti = ti;
 		this.tx = tx;
+
 		filename = ti.fileName();
 		if (tx.size(filename) == 0)
 			appendBlock();
 		moveTo(0);
+
 	}
+
+
 
 	public void resetStatsRecord() {
 		this.statsRecord.clear();
@@ -71,7 +74,7 @@ public class RecordFile {
 				return true;
 			if (atLastBlock())
 				return false;
-			moveTo(currentblknum + 1);
+			moveTo(currentblknum + 1);	
 		}
 	}
 
@@ -81,10 +84,6 @@ public class RecordFile {
 	 * @param fldname the name of the field
 	 * @return the integer value at that field
 	 */
-	//	public int getInt(String fldname) {
-	//		return rp.getInt(fldname);
-	//	}
-
 	public int getInt(String fldname) {
 
 		incrementerRead();
@@ -95,6 +94,8 @@ public class RecordFile {
 		return rp.getInt(fldname);
 	}
 
+
+	//DAVIDE
 	private void incrementerRead() {
 
 		if(this.statsRecord.containsKey(this.currentRid())) {
@@ -120,10 +121,6 @@ public class RecordFile {
 	 * @param fldname the name of the field
 	 * @return the string value at that field
 	 */
-	//	public String getString(String fldname) {
-	//		return rp.getString(fldname);
-	//	}
-
 	public String getString(String fldname) {
 
 		incrementerRead();
@@ -139,10 +136,6 @@ public class RecordFile {
 	 * @param fldname the name of the field
 	 * @param val the new value for the field
 	 */
-	//	public void setInt(String fldname, int val) {
-	//		rp.setInt(fldname, val);
-	//	}
-
 	public void setInt(String fldname, int val) {
 
 		incrementerWritten();
@@ -150,17 +143,12 @@ public class RecordFile {
 		rp.setInt(fldname, val);
 	}
 
-
 	/**
 	 * Sets the value of the specified field 
 	 * in the current record.
 	 * @param fldname the name of the field
 	 * @param val the new value for the field
 	 */
-	//	public void setString(String fldname, String val) {
-	//		rp.setString(fldname, val);
-	//	}
-
 	public void setString(String fldname, String val) {
 
 		incrementerWritten();
@@ -168,6 +156,8 @@ public class RecordFile {
 		rp.setString(fldname, val);
 	}
 
+
+	//DAVIDE
 	private void incrementerWritten() {
 
 		if(this.statsRecord.containsKey(this.currentRid())) {
@@ -272,4 +262,7 @@ public class RecordFile {
 	public void setLastWrittenRecord(RID lastWrittenRecord) {
 		this.lastWrittenRecord = lastWrittenRecord;
 	}
+
+
+
 }
