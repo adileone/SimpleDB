@@ -55,7 +55,7 @@ public class TestPrimo {
 
 	public static void main(String[] args) throws FileNotFoundException {
 
-		PrintWriter writer = new PrintWriter("/home/davide/studentdb/studenti.tbl");
+		PrintWriter writer = new PrintWriter("/home/alessandro/studentdb/studenti.tbl");
 		writer.print("");
 		writer.close();
 		SimpleDB.init("studentdb");

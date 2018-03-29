@@ -1,7 +1,6 @@
 package simpledb.stats;
 
 
-//DAVIDE
 
 public class BasicFileStats {
 

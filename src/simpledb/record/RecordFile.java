@@ -95,7 +95,6 @@ public class RecordFile {
 	}
 
 
-	//DAVIDE
 	private void incrementerRead() {
 
 		if(this.statsRecord.containsKey(this.currentRid())) {
@@ -157,7 +156,6 @@ public class RecordFile {
 	}
 
 
-	//DAVIDE
 	private void incrementerWritten() {
 
 		if(this.statsRecord.containsKey(this.currentRid())) {

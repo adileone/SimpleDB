@@ -1,11 +1,12 @@
 package simpledb.remote;
 
-import simpledb.tx.Transaction;
-import simpledb.stats.BasicFileStats;
-import simpledb.server.SimpleDB;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.Map;
+
+import simpledb.server.SimpleDB;
+import simpledb.stats.BasicFileStats;
+import simpledb.tx.Transaction;
 
 /**
  * The RMI server-side implementation of RemoteConnection.
@@ -74,7 +75,6 @@ class RemoteConnectionImpl extends UnicastRemoteObject implements RemoteConnecti
 		tx = new Transaction();
 	}
 
-	//DAVIDE
 	private static void printBlockStats(String fileName, BasicFileStats fileStats){
 
 		System.out.printf("\n%-18s%-12s%s\n","File Name","Read","Write");
@@ -82,7 +82,7 @@ class RemoteConnectionImpl extends UnicastRemoteObject implements RemoteConnecti
 
 	}
 
-	//DAVIDE
+	
 	public void printAllBlockStats(){
 
 		Map<String,BasicFileStats> mappa =  SimpleDB.fileMgr().getBlockStatsFile();

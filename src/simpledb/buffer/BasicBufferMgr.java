@@ -113,7 +113,7 @@ class BasicBufferMgr {
 		return null;
 	}
 
-	//DAVIDE
+	
 	// Strategia Naive
 	//   private Buffer chooseUnpinnedBuffer() {
 	//      for (Buffer buff : bufferpool)
@@ -123,7 +123,7 @@ class BasicBufferMgr {
 	//   }
 
 
-	//DAVIDE
+	
 	//Strategia Clock
 	private Buffer chooseUnpinnedBuffer() {
 

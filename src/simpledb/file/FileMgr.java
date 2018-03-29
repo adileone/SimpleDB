@@ -28,7 +28,7 @@ public class FileMgr {
 	private boolean isNew;
 	private Map<String,FileChannel> openFiles = new HashMap<String,FileChannel>();
 
-	//DAVIDE
+	
 	private Map<String, BasicFileStats> blockStatsFile;
 
 	/**
@@ -94,7 +94,6 @@ public class FileMgr {
 	}
 
 
-	//DAVIDE
 	private void updateReadBlockStats(Block blk, ByteBuffer bb){
 
 
@@ -110,7 +109,6 @@ public class FileMgr {
 
 	}
 
-	//DAVIDE
 	private void updateWriteBlockStats(Block blk, ByteBuffer bb){
 
 		BasicFileStats basicFileStats = this.blockStatsFile.get(blk.fileName());

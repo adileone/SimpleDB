@@ -1,9 +1,6 @@
 package simpledb.stats;
 
 
-
-//DAVIDE
-
 public class BasicRecordStats {
 
 
