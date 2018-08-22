@@ -171,6 +171,7 @@ public class FileMgr {
 	 * @return the file channel associated with the open file.
 	 * @throws IOException
 	 */
+	@SuppressWarnings("resource")
 	private FileChannel getFile(String filename) throws IOException {
 		FileChannel fc = openFiles.get(filename);
 
